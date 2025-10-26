@@ -1,0 +1,24 @@
+{
+  "algoritmo": "Dijkstra",
+  "descripcion": "Calcula la ruta más corta desde el punto inicial (Gasolinera Papigaso) hasta el destino final (Colegio Genius Americano) recorriendo las paradas en orden óptimo.",
+  "nodoInicio": "Papigaso",
+  "nodoFinal": "Colegio Genius Americano",
+  "rutaOptima": [
+    "Papigaso",
+    "Parada 1 - Los Laureles",
+    "Parada 2 - La Ceiba",
+    "Parada 3 - Barrio Latino",
+    "Parada 4 - El Progreso",
+    "Colegio Genius Americano"
+  ],
+  "distanciasKm": {
+    "Papigaso - Parada 1": 0.85,
+    "Parada 1 - Parada 2": 1.10,
+    "Parada 2 - Parada 3": 1.40,
+    "Parada 3 - Parada 4": 1.30,
+    "Parada 4 - Colegio Genius Americano": 0.74
+  },
+  "distanciaTotalKm": 5.39,
+  "tiempoEstimado": "12 minutos",
+  "beneficio": "Optimiza el recorrido reduciendo la distancia total y el consumo de combustible del bus."
+}

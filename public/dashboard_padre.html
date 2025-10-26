@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Padre | Simulador de Ruta Escolar</title>
+
+  <!-- Estilos -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script type="module" src="modules/padre.js"></script>
+</head>
+
+<body class="role-padre">
+  <!-- ============================================================
+  🧭 BARRA SUPERIOR
+  ============================================================ -->
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/icons/LogoColegio.png" class="logo-small" alt="Logo" />
+      <h1>Simulador de Ruta Escolar</h1>
+    </div>
+    <div class="user-info">
+      <span id="user-info">👨‍👩‍👧 Carlos Gómez</span>
+      <button id="logout" class="btn-logout">Salir</button>
+    </div>
+  </header>
+
+  <!-- ============================================================
+  📋 DISEÑO PRINCIPAL
+  ============================================================ -->
+  <div class="layout">
+    <aside class="sidebar">
+      <!-- Selección de Ruta -->
+      <h2>Selección de Ruta</h2>
+      <select id="routeSelector" class="route-select">
+        <option value="dataRuta1Matutina.json">Ruta 1 - Matutina</option>
+        <option value="dataRuta2Vespertina.json">Ruta 2 - Vespertina</option>
+      </select>
+
+      <hr class="divider">
+
+      <!-- Paradas -->
+      <h2>Paradas</h2>
+      <ul id="paradas-list" class="stops-list">
+        <li>Seleccione una ruta...</li>
+      </ul>
+
+      <hr class="divider">
+
+      <!-- Controles -->
+      <h2>Controles</h2>
+      <button id="btnStart" class="btn-orange">Iniciar Recorrido 🚌</button>
+
+      <hr class="divider">
+
+      <!-- Indicadores del recorrido -->
+      <div class="info-box">
+        <p><strong>Bus en:</strong> <span id="estadoActual">—</span></p>
+        <p><strong>Tiempo restante:</strong> <span id="tiempoRestante">—</span></p>
+      </div>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="content">
+      <div id="map" class="map"></div>
+      <div id="message-container" class="message-box">
+        👨‍👩‍👧 Listo para visualizar el recorrido del bus.
+      </div>
+    </main>
+  </div>
+</body>
+</html>

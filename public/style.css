@@ -1,0 +1,776 @@
+/* =========================================================
+🎨 ESTILOS PRINCIPALES - Simulador de Ruta Escolar
+Colegio Genius Americano | Jutiapa
+========================================================= */
+
+/* ===== VARIABLES DE COLOR Y FUENTE ===== */
+:root {
+  --primary: #4CAF50;
+  --bg: #ffffff;
+  --text: #222;
+  --muted: #666;
+  --white: #fff;
+  --blue: #003366;
+  --red: #cc0000;
+  --orange: #ff9800;
+  --shadow: rgba(0, 0, 0, 0.15);
+}
+
+/* ===== RESETEO Y BASE ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+}
+
+/* =========================================================
+📐 LAYOUT GENERAL (MAPA + SIDEBAR)
+========================================================= */
+.layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  height: calc(100vh - 64px);
+}
+
+.sidebar {
+  background: var(--white);
+  border-right: 1px solid #e0e0e0;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.content {
+  position: relative;
+  padding: 0;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* =========================================================
+🧭 TOPBAR
+========================================================= */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: var(--blue);
+  color: var(--white);
+  box-shadow: 0 4px 16px var(--shadow);
+  position: relative;
+  z-index: 10;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo,
+.logo-small {
+  filter: brightness(0) invert(1);
+}
+
+.logo {
+  height: 64px;
+}
+
+.logo-small {
+  height: 40px;
+}
+
+.topbar h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+/* =========================================================
+👤 INFORMACIÓN DE USUARIO
+========================================================= */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+🚪 BOTÓN SALIR
+========================================================= */
+.btn-logout {
+  background: var(--red);
+  color: var(--white);
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-logout:hover {
+  background: #ff0000;
+}
+
+/* =========================================================
+🔐 LOGIN - TARJETA AZUL (con fondo real del colegio)
+========================================================= */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background:
+    linear-gradient(rgba(0, 51, 102, 0.55), rgba(0, 51, 102, 0.55)),
+    url('assets/backgrounds/FachadaColegio.jpeg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  backdrop-filter: blur(4px);
+}
+
+.login-card {
+  background: rgba(0, 51, 102, 0.9);
+  color: var(--white);
+  max-width: 420px;
+  width: 90%;
+  padding: 40px 32px;
+  border-radius: 18px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+  text-align: center;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+}
+
+.login-logo {
+  height: 90px;
+  margin-bottom: 15px;
+  filter: brightness(0) invert(1);
+}
+
+.login-title {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.login-subtitle {
+  font-size: 1rem;
+  color: #dfe6f3;
+  margin-bottom: 25px;
+}
+
+.form label {
+  text-align: left;
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+  color: #dfe6f3;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+🧍 LISTADO DE PARADAS (más compacto)
+========================================================= */
+.stops-list li {
+  font-size: 0.88rem;
+  line-height: 1.3rem;
+  margin-bottom: 4px;
+  list-style-type: "• ";
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* =========================================================
+🎨 BOTONES PRINCIPALES Y CONTROLES
+========================================================= */
+
+/* Botones naranjas (Iniciar, Pausar, Continuar) */
+#btnIniciar,
+#btnPausar,
+#btnContinuar {
+  background: var(--orange);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+  margin-bottom: 10px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#btnIniciar:hover,
+#btnPausar:hover,
+#btnContinuar:hover {
+  background: #f57c00;
+  transform: translateY(-2px);
+}
+
+/* Botón verde “Aprende Conmigo” */
+#btnAprende {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#btnAprende:hover {
+  background: #388e3c;
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+💬 MENSAJE DE LA MAESTRA
+========================================================= */
+.message-box {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  color: var(--white);
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  max-width: 320px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 999;
+}
+
+/* =========================================================
+🎨 COLORES DE MENSAJES
+========================================================= */
+.message-info { background: rgba(0, 102, 204, 0.95); border-left: 4px solid #2196f3; }
+.message-success { background: rgba(46, 125, 50, 0.95); border-left: 4px solid #4caf50; }
+.message-warning { background: rgba(255, 152, 0, 0.95); border-left: 4px solid #ffb300; }
+.message-error { background: rgba(211, 47, 47, 0.95); border-left: 4px solid #e53935; }
+
+/* =========================================================
+🕒 TIEMPO DE ESPERA EN PARADAS
+========================================================= */
+.timer {
+  background: var(--primary);
+  color: var(--white);
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 6px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================================
+🗺️ ICONOS PERSONALIZADOS DEL MAPA
+========================================================= */
+.icon-bus img { width: 38px; height: 38px; }
+.icon-parada img { width: 28px; height: 28px; }
+.icon-maestra img { width: 34px; height: 34px; }
+.icon-colegio img { width: 36px; height: 36px; }
+.icon-gasolinera img { width: 34px; height: 34px; }
+
+/* =========================================================
+🗺️ SELECTOR DE RUTA
+========================================================= */
+.route-select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  background: #f8f9fa;
+  cursor: pointer;
+  margin-bottom: 14px;
+  color: var(--text);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.route-select:hover {
+  border-color: var(--primary);
+  box-shadow: 0 3px 8px rgba(76, 175, 80, 0.25);
+}
+
+.route-select:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: #e8f5e9;
+}
+
+.divider {
+  border: none;
+  height: 1px;
+  background: #ddd;
+  margin: 10px 0 18px 0;
+}
+
+/* =========================================================
+🎓 PANEL “APRENDE CONMIGO”
+========================================================= */
+.learn-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: #f8faff;
+  text-align: center;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.learn-box {
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  padding: 25px 40px;
+  max-width: 400px;
+  text-align: center;
+}
+
+.icon-maestra-learn {
+  width: 110px;
+  margin-bottom: 15px;
+}
+
+.learn-box h2 {
+  color: var(--blue);
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.learn-box p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+/* 🎓 Botones uniformes en "Aprende Conmigo" */
+.learn-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centra los botones */
+  justify-content: center;
+  gap: 15px; /* 🔹 espacio uniforme entre todos los botones */
+  margin-top: 20px;
+}
+
+.learn-buttons button {
+  width: 230px; /* 🔹 todos del mismo tamaño */
+  padding: 12px 0;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.learn-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Botones verdes (Dijkstra y Kruskal) */
+#btnDijkstra,
+#btnKruskal {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#btnDijkstra:hover,
+#btnKruskal:hover {
+  background: #388e3c;
+  transform: translateY(-2px);
+}
+
+/* Botón rojo (Volver al mapa) */
+#btnVolverMapa {
+  background: #e53935;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#btnVolverMapa:hover {
+  background: #b71c1c;
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+📘 EXTENSIÓN VISUAL — DETALLE DE LOS ALGORITMOS
+(Ajuste para imágenes grandes y scroll interno)
+========================================================= */
+
+.algoritmo-panel {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px 40px;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  overflow-y: auto;       /* 🔹 activa el scroll interno */
+  max-height: 80vh;       /* 🔹 altura máxima visible */
+}
+
+.algoritmo-panel h2 {
+  color: var(--blue);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  position: sticky;       /* 🔹 mantiene el título visible */
+  top: 0;
+  background: #ffffff;
+  padding: 10px 0;
+  z-index: 10;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+/* Contenedor flexible de las imágenes */
+.algoritmo-imagenes {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.algoritmo-imagenes img {
+  width: 95%;
+  max-width: 850px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  object-fit: contain;
+}
+
+/* Botón volver */
+.btn-volver-menu {
+  margin-top: 25px;
+  background-color: #d32f2f;
+  color: #fff;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-volver-menu:hover {
+  background-color: #b71c1c;
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+🎓 PANEL “APRENDE CONMIGO” — Título fijo arriba
+========================================================= */
+.learn-panel {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 90px);
+  background: #f8faff;
+  padding: 25px 0;
+}
+
+/* =========================================================
+📘 CAJA GENERAL
+========================================================= */
+.learn-box {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================================================
+📦 PANEL BLANCO CON SCROLL INTERNO
+========================================================= */
+.algoritmo-panel {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  max-width: 1100px;
+  height: 85vh; /* 🔹 Altura visible */
+  overflow-y: auto; /* 🔹 Scroll interno */
+  padding: 30px 40px 40px;
+  margin-bottom: 30px;
+  position: relative;
+  text-align: center;
+  scroll-behavior: smooth;
+}
+
+/* =========================================================
+📍 TÍTULO FIJO ARRIBA DEL TODO
+========================================================= */
+.algoritmo-panel h2 {
+  color: var(--blue);
+  font-size: 1.8rem;
+  font-weight: 700;
+  position: absolute; /* 🔹 fijo en la parte superior */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  padding: 18px 0;
+  border-bottom: 3px solid #f0f0f0;
+  z-index: 20;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
+  margin: 0;
+}
+
+/* Espacio para que el contenido no se oculte bajo el título */
+.algoritmo-imagenes {
+  margin-top: 80px; /* 🔹 deja espacio bajo el título fijo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+/* =========================================================
+🖼️ IMÁGENES UNIFORMES
+========================================================= */
+.algoritmo-imagenes img {
+  width: 90%;
+  max-width: 850px;
+  border-radius: 0;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.algoritmo-imagenes img:hover {
+  transform: scale(1.02);
+}
+
+/* =========================================================
+🔘 BOTÓN DENTRO DEL PANEL BLANCO
+========================================================= */
+.btn-volver-menu {
+  background-color: #d32f2f;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  margin: 15px auto 10px auto;
+}
+
+.btn-volver-menu:hover {
+  background-color: #b71c1c;
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+🎚️ SCROLL ESTÉTICO
+========================================================= */
+.algoritmo-panel::-webkit-scrollbar {
+  width: 10px;
+}
+
+.algoritmo-panel::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+.algoritmo-panel::-webkit-scrollbar-thumb {
+  background: #b0b0b0;
+  border-radius: 10px;
+}
+
+.algoritmo-panel::-webkit-scrollbar-thumb:hover {
+  background: #8d8d8d;
+}
+
+/* =========================================================
+📱 RESPONSIVE
+========================================================= */
+@media (max-width: 768px) {
+  .algoritmo-panel {
+    padding: 25px 20px;
+    height: 80vh;
+  }
+
+  .algoritmo-panel h2 {
+    font-size: 1.5rem;
+    padding: 12px 0;
+  }
+
+  .algoritmo-imagenes {
+    margin-top: 70px;
+  }
+
+  .algoritmo-imagenes img {
+    width: 100%;
+  }
+
+  .btn-volver-menu {
+    width: 80%;
+  }
+}
+
+
+/* =========================================================
+🎓 DIFERENCIAS POR ROL
+========================================================= */
+.role-tutora .topbar { background: var(--blue); }
+.role-tutora .sidebar { background: #f8faff; }
+
+.role-microbusero .topbar { background: #2c3e50; }
+.role-microbusero .sidebar { background: #fafafa; }
+
+.role-padre .topbar { background: #00695c; }
+.role-padre .sidebar { background: #f2fffa; }
+
+/* =========================================================
+📱 RESPONSIVE
+========================================================= */
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar {
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+  }
+  .map { height: calc(100vh - 260px); }
+}
+
+@media (max-width: 600px) {
+  .login-card {
+    padding: 30px 20px;
+    background: rgba(0, 51, 102, 0.95);
+  }
+  .login-title { font-size: 1.3rem; }
+  .login-logo { height: 70px; }
+}
+
+/* =========================================================
+🟠 BOTÓN PRINCIPAL - LOGIN (INGRESAR)
+========================================================= */
+.btn-orange {
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 12px;
+  box-shadow: 0 6px 18px rgba(255, 152, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn-orange:hover {
+  background: #f57c00; /* tono más oscuro al pasar el mouse */
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+🟩 PANEL MICROBUSERO
+========================================================= */
+.role-microbusero .sidebar {
+  background: #f8faff;
+}
+
+.role-microbusero .topbar {
+  background: #1b5e20; /* verde oscuro */
+}
+
+.info-box {
+  background: #e8f5e9; /* verde suave */
+  border: 1px solid #c8e6c9;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-top: 15px;
+  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.2);
+}
+
+.info-box p {
+  color: #1b5e20;
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+/* Botones naranjas reutilizados */
+.btn-orange {
+  background: var(--orange);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(255, 152, 0, 0.4);
+  margin-bottom: 10px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-orange:hover {
+  background: #f57c00;
+  transform: translateY(-2px);
+}

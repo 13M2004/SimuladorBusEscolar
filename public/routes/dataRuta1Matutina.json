@@ -1,0 +1,39 @@
+{
+  "nombreRuta": "Ruta 1 - Matutina",
+  "horario": "06:16 a 07:09",
+  "center": [14.2919, -89.8960],
+  "zoom": 14,
+  "busSpeedKmh": 25,
+  "route": [
+    { "nombre": "6ta Avenida zona 1, Jutiapa (Inicio)", "lat": 14.29542, "lng": -89.90137 },
+    { "nombre": "6ta Calle Barrio Latino (Alumno 1)", "lat": 14.29501, "lng": -89.90021 },
+    { "nombre": "7a Avenida zona 1, Barrio Latino (Alumno 2)", "lat": 14.29422, "lng": -89.89922 },
+    { "nombre": "Zona 1 Bo. Latino, Callejón Dolores (Alumno 3)", "lat": 14.29383, "lng": -89.89817 },
+    { "nombre": "7a Calle zona 1, Barrio Latino (Alumno 4)", "lat": 14.29317, "lng": -89.89711 },
+    { "nombre": "8va Calle zona 1, Barrio Latino (Alumno 5)", "lat": 14.29257, "lng": -89.89623 },
+    { "nombre": "4a Avenida zona 1, Barrio Latino (Alumno 6)", "lat": 14.29204, "lng": -89.89548 },
+    { "nombre": "5a Calle zona 1, Jutiapa (Alumno 7)", "lat": 14.29159, "lng": -89.89462 },
+    { "nombre": "Entrada Colonia La Ceiba (Alumno 8)", "lat": 14.29087, "lng": -89.89374 },
+    { "nombre": "10a Avenida zona 3, Bo. El Chaparrón (Alumno 9)", "lat": 14.29044, "lng": -89.8928 },
+    { "nombre": "7a Calle zona 3, Bo. El Chaparrón (Alumno 10)", "lat": 14.28996, "lng": -89.89212 },
+    { "nombre": "Entrada Residenciales Los Álamos, Bo. El Chaparrón (Alumno 11)", "lat": 14.28941, "lng": -89.89153 },
+    { "nombre": "Entrada Colonia Jerusalén (Alumno 12)", "lat": 14.28881, "lng": -89.89103 },
+    { "nombre": "Tienda Esquina, Aldea Cerro Gordo (Alumno 13)", "lat": 14.28826, "lng": -89.89042 },
+    { "nombre": "Colegio Genius Americano (Destino final)", "lat": 14.28800, "lng": -89.89850 }
+  ],
+  "students": [
+    { "nombre": "Alumno 1", "parada": "6ta Calle Barrio Latino", "etaBuffer": 2 },
+    { "nombre": "Alumno 2", "parada": "7a Avenida zona 1, Barrio Latino", "etaBuffer": 2 },
+    { "nombre": "Alumno 3", "parada": "Zona 1 Bo. Latino, Callejón Dolores", "etaBuffer": 1 },
+    { "nombre": "Alumno 4", "parada": "7a Calle zona 1, Barrio Latino", "etaBuffer": 1 },
+    { "nombre": "Alumno 5", "parada": "8va Calle zona 1, Barrio Latino", "etaBuffer": 1 },
+    { "nombre": "Alumno 6", "parada": "4a Avenida zona 1, Barrio Latino", "etaBuffer": 1 },
+    { "nombre": "Alumno 7", "parada": "5a Calle zona 1, Jutiapa", "etaBuffer": 1 },
+    { "nombre": "Alumno 8", "parada": "Entrada Colonia La Ceiba", "etaBuffer": 1 },
+    { "nombre": "Alumno 9", "parada": "10a Avenida zona 3, Bo. El Chaparrón", "etaBuffer": 1 },
+    { "nombre": "Alumno 10", "parada": "7a Calle zona 3, Bo. El Chaparrón", "etaBuffer": 1 },
+    { "nombre": "Alumno 11", "parada": "Entrada Residenciales Los Álamos, Bo. El Chaparrón", "etaBuffer": 1 },
+    { "nombre": "Alumno 12", "parada": "Entrada Colonia Jerusalén", "etaBuffer": 1 },
+    { "nombre": "Alumno 13", "parada": "Tienda Esquina, Aldea Cerro Gordo", "etaBuffer": 1 }
+  ]
+}

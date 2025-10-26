@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Tutora | Simulador de Ruta Escolar</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+
+<body class="role-tutora">
+  <!-- ============================================================
+  🧭 BARRA SUPERIOR
+  ============================================================ -->
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/icons/LogoColegio.png" class="logo-small" alt="Logo" />
+      <h1>Simulador de Ruta Escolar</h1>
+    </div>
+    <div class="user-info">
+      <span id="user-info">👩‍🏫 Tutora Genius</span>
+      <button id="logout" class="btn-logout">Salir</button>
+    </div>
+  </header>
+
+  <!-- ============================================================
+  📋 DISEÑO PRINCIPAL
+  ============================================================ -->
+  <div class="layout">
+    <aside class="sidebar">
+      <!-- Selección de Ruta -->
+      <h2>Selección de Ruta</h2>
+      <select id="routeSelector" class="route-select">
+        <option value="dataRuta1Matutina.json">Ruta 1 - Matutina</option>
+        <option value="dataRuta2Vespertina.json">Ruta 2 - Vespertina</option>
+      </select>
+
+      <hr class="divider">
+
+      <!-- Paradas -->
+      <h2>Paradas</h2>
+      <ul id="paradas-list" class="stops-list">
+        <li>Seleccione una ruta...</li>
+      </ul>
+
+      <hr class="divider">
+
+      <!-- Controles -->
+      <h2>Controles</h2>
+      <button id="btnIniciar" class="btn-orange">Iniciar Recorrido 🚌</button>
+      <button id="btnPausar" class="btn-orange-outline">Pausar Recorrido ⏸️</button>
+      <button id="btnContinuar" class="btn-orange-outline">Continuar ▶️</button>
+      <button id="btnAprende" class="btn-orange">Aprende Conmigo 🎓</button>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="content">
+      <div id="map" class="map"></div>
+      <div id="message-container" class="message-box">👩‍🏫 ¡Bienvenidos estudiantes!</div>
+
+      <!-- Panel Aprende Conmigo -->
+      <div id="learn-panel" class="learn-panel" style="display:none;">
+        <div class="learn-box">
+          <img src="assets/icons/Maestra.png" alt="Maestra" class="icon-maestra-learn">
+          <h2>Aprende Conmigo 🎓</h2>
+          <p>Selecciona un algoritmo para visualizar:</p>
+          <div class="learn-buttons">
+            <button id="btnDijkstra" class="btn-orange">Algoritmo Dijkstra</button>
+            <button id="btnKruskal" class="btn-orange">Algoritmo Kruskal</button>
+            <button id="btnVolverMapa" class="btn-orange-outline">Volver al Mapa</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ============================================================
+  📜 Scripts
+  ============================================================ -->
+  <script type="module" src="modules/tutora.js"></script>
+</body>
+</html>

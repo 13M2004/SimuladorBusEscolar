@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Simulador de Ruta Escolar</title>
+
+  <!-- Fuentes y estilos -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Fondo institucional centrado -->
+  <div class="login-container">
+    <div class="login-card">
+      <img src="assets/icons/LogoColegio.png" alt="Logo Colegio Genius Americano" class="login-logo" />
+
+      <h1 class="login-title">Simulador de Ruta Escolar</h1>
+      <h2 class="login-subtitle">Colegio Genius Americano | Jutiapa</h2>
+
+      <form id="login-form" class="form">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="usuario@demo.com" required />
+
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" placeholder="******" required />
+
+        <label for="role">Rol</label>
+        <select id="role" required>
+          <option value="tutora">Tutora</option>
+          <option value="microbusero">Microbusero</option>
+          <option value="padre">Padre</option>
+        </select>
+
+        <button type="submit" class="btn-orange">Ingresar</button>
+      </form>
+
+      <p class="muted white-text">
+        Versión educativa con roles simulados.<br />
+        Integra Firebase en la siguiente fase.
+      </p>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script type="module" src="login.js"></script>
+</body>
+</html>

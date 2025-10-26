@@ -1,0 +1,23 @@
+{
+  "nombreRuta": "Ruta 2 - Vespertina",
+  "horario": "12:40 a 13:42",
+  "center": [14.2880, -89.8950],
+  "zoom": 14,
+  "busSpeedKmh": 25,
+  "route": [
+    { "nombre": "Cruce a Finca El Sitio (Inicio)", "lat": 14.28797, "lng": -89.90432 },
+    { "nombre": "Garita Residenciales Amayito (Alumno 1)", "lat": 14.28825, "lng": -89.90212 },
+    { "nombre": "Entrada Residencial Alcázar del Cerro (Alumno 2)", "lat": 14.28844, "lng": -89.90018 },
+    { "nombre": "Aldea Cerro Gordo, cruce Granja por calle Antigua (Alumno 3)", "lat": 14.28862, "lng": -89.89841 },
+    { "nombre": "Barrio El Chaparrón, Casa de Salud y Maternidad (Alumno 4)", "lat": 14.28910, "lng": -89.89555 },
+    { "nombre": "Entrada Colonia El Manantial (Alumno 5)", "lat": 14.29042, "lng": -89.89372 },
+    { "nombre": "Tunas I, Entrada Callejón 5 Calles (Colegio Genius Americano)", "lat": 14.29155, "lng": -89.89183 }
+  ],
+  "students": [
+    { "nombre": "Alumno 1", "parada": "Garita Residenciales Amayito", "etaBuffer": 2 },
+    { "nombre": "Alumno 2", "parada": "Entrada Residencial Alcázar del Cerro", "etaBuffer": 2 },
+    { "nombre": "Alumno 3", "parada": "Aldea Cerro Gordo, cruce Granja por calle Antigua", "etaBuffer": 1 },
+    { "nombre": "Alumno 4", "parada": "Barrio El Chaparrón, Casa de Salud y Maternidad", "etaBuffer": 1 },
+    { "nombre": "Alumno 5", "parada": "Entrada Colonia El Manantial", "etaBuffer": 1 }
+  ]
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "email": "tutora@demo.com",
+    "password": "123456",
+    "role": "tutora",
+    "name": "Tutora Genius"
+  },
+  {
+    "email": "micro@demo.com",
+    "password": "123456",
+    "role": "microbusero",
+    "name": "Sr. Pérez"
+  },
+  {
+    "email": "padre@demo.com",
+    "password": "123456",
+    "role": "padre",
+    "name": "Carlos Gómez"
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "algoritmo": "Kruskal",
+  "descripcion": "Construye un árbol de expansión mínima (MST) conectando todas las paradas con el menor costo total posible, sin formar ciclos.",
+  "nodos": [
+    "Papigaso",
+    "Parada 1 - Los Laureles",
+    "Parada 2 - La Ceiba",
+    "Parada 3 - Barrio Latino",
+    "Parada 4 - El Progreso",
+    "Colegio Genius Americano"
+  ],
+  "aristasSeleccionadas": [
+    { "conexion": "Papigaso ↔ Parada 1 - Los Laureles", "pesoKm": 0.85 },
+    { "conexion": "Parada 1 - Los Laureles ↔ Parada 2 - La Ceiba", "pesoKm": 1.10 },
+    { "conexion": "Parada 2 - La Ceiba ↔ Parada 3 - Barrio Latino", "pesoKm": 1.40 },
+    { "conexion": "Parada 3 - Barrio Latino ↔ Parada 4 - El Progreso", "pesoKm": 1.30 },
+    { "conexion": "Parada 4 - El Progreso ↔ Colegio Genius Americano", "pesoKm": 0.74 }
+  ],
+  "costoTotalKm": 5.39,
+  "comparacionConDijkstra": "Ambos algoritmos coinciden en el costo total, pero Dijkstra prioriza el trayecto más corto punto a punto, mientras que Kruskal optimiza la conexión general entre todas las paradas.",
+  "beneficio": "Permite visualizar una estructura de conexión eficiente entre todos los puntos, ideal para planificar rutas alternativas o secundarias."
+}
